@@ -1,0 +1,35 @@
+---
+import FutureLink from "./FutureLink.astro";
+const links = [
+  ["#pilhy", "Пільги і програми"],
+  ["#posluhy", "Послуги і ціни"],
+  ["#dity", "Дітям"],
+  ["#vizyt", "Як потрапити"],
+  ["#kontakty", "Контакти"],
+];
+---
+<header class="site-header" id="header">
+  <div class="container site-header__in">
+    <a class="logo" href="#top" aria-label="Стоматологічна поліклініка №1 — на початок сторінки">
+      <img src="logo.svg" alt="Стоматологічна поліклініка №1" width="224" height="50" />
+    </a>
+    <nav class="nav-desktop" aria-label="Розділи сторінки">
+      {links.map(([href, t]) => <a href={href}>{t}</a>)}
+    </nav>
+    <div class="header-tel">
+      <a class="header-tel__num" href="tel:+380674758565" data-rec="R-002,GA-R001,MA-R004,SM-R012,SE-R004" aria-label="Реєстратура: (067) 475-85-65">(067) 475-85-65</a>
+      <span class="status" data-status>Пн–Пт 08:00–20:00</span>
+      <a class="btn btn--call header-call" href="tel:+380674758565" data-rec="R-002">Реєстратура</a>
+    </div>
+    <details class="menu" data-menu>
+      <summary><i aria-hidden="true"></i><span>Меню</span></summary>
+      <nav class="menu__panel" aria-label="Меню">
+        {links.map(([href, t]) => <a href={href}>{t}</a>)}
+        <p class="menu__sub">Незабаром</p>
+        <FutureLink note="Розділ у розробці">Лікарі і розклад</FutureLink>
+        <FutureLink note="Розділ у розробці">Повний прейскурант</FutureLink>
+        <FutureLink note="Розділ у розробці">Новини</FutureLink>
+      </nav>
+    </details>
+  </div>
+</header>

@@ -1,0 +1,242 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import CallButton from "../components/CallButton.astro";
+import PriceTile from "../components/PriceTile.astro";
+import FutureLink from "../components/FutureLink.astro";
+
+const map = "https://www.google.com/maps/search/?api=1&query=%D0%BF%D1%80.+%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%B0+24+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2";
+const jsonld = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  name: "Стоматологічна поліклініка №1",
+  telephone: "+380674758565",
+  email: "hello@1sp.lviv.ua",
+  address: { "@type": "PostalAddress", streetAddress: "пр. Шевченка, 24", addressLocality: "Львів", addressCountry: "UA" },
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "20:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday", "Sunday"], opens: "09:00", closes: "16:00" },
+  ],
+};
+---
+<Base lang="uk" title="Стоматологічна поліклініка №1 у Львові — програми, ціни, реєстратура" description="Комунальна стоматологія на пр. Шевченка, 24: протезування за міською програмою, допомога військовим, платні послуги за відкритим прейскурантом. Реєстратура: (067) 475-85-65.">
+  <Fragment slot="head">
+    <meta property="og:image" content="og.jpg" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
+  </Fragment>
+
+  <SiteHeader slot="header" />
+
+  <Section id="top" rec="R-003,R-011,GA-R002,SE-R001,SE-R002,SE-R003" class="top" label="Перший екран">
+    <div class="container">
+      <h1>Стоматологічна поліклініка №1 у центрі Львова</h1>
+      <div class="fork">
+        <a class="door door--blue" href="#pilhy">
+          <span class="door__name">За програмою або пільгою</span>
+          <span class="door__sub">Пільговикам, військовим, ветеранам</span>
+          <span class="door__go"><span class="door__go-t">Хто має право і що взяти</span> <span class="arrow" aria-hidden="true">↓</span></span>
+        </a>
+        <a class="door door--mint" href="#posluhy" data-rec="R-006">
+          <span class="door__name">Платно, за прейскурантом</span>
+          <span class="door__sub">Огляд терапевта <span class="door__price">258 грн</span></span>
+          <span class="door__big" aria-hidden="true">258 грн</span>
+          <span class="door__go"><span class="door__go-t">Ціни на всі напрямки</span> <span class="arrow" aria-hidden="true">↓</span></span>
+        </a>
+      </div>
+    </div>
+    <div class="registry on-dark">
+      <div class="container registry__in">
+        <div>
+          <p class="registry__label">Реєстратура</p>
+          <a class="phone-big" href="tel:+380674758565" data-rec="R-002">(067) 475-85-65</a>
+        </div>
+        <div class="registry__side">
+          <div class="registry__meta">
+            <span class="status" data-status>Пн–Пт 08:00–20:00 · Сб–Нд 09:00–16:00</span>
+            <span>пр. Шевченка, 24 · <a href={map} target="_blank" rel="noopener">Як дістатися</a></span>
+          </div>
+        </div>
+        <CallButton />
+      </div>
+    </div>
+  </Section>
+
+  <Section id="pilhy" rec="R-005,GA-R003,MA-R005,SE-R005" class="section pilhy on-primary" label="Пільги і програми">
+    <div class="container pilhy__grid">
+      <div class="pilhy__intro">
+        <h2 class="section__h">Пільги і програми</h2>
+        <p class="lead">Лікування за міською програмою, допомога військовим і ветеранам, робота з НСЗУ — в одному місці.</p>
+      </div>
+      <div>
+        <article class="program">
+          <p class="program__for">Для пільгових категорій жителів Львівської територіальної громади</p>
+          <h3>Міська програма зубопротезування</h3>
+          <ul>
+            <li>Зубопротезування</li>
+            <li>Лікувально-хірургічна підготовка до протезування</li>
+          </ul>
+          <div class="program__act">
+            <CallButton variant="light" label="Зателефонувати" />
+            <a class="tl" href="#docs" data-doc="pilha">Що взяти з собою <span class="arrow" aria-hidden="true">↓</span></a>
+          </div>
+        </article>
+        <article class="program">
+          <p class="program__for">Для військовослужбовців, ветеранів і ветеранок, учасників бойових дій</p>
+          <h3>Військовим і ветеранам</h3>
+          <ul>
+            <li>Безоплатні лікування, видалення зубів і протезування в межах програм НСЗУ та міського бюджету</li>
+            <li>Умови і ліміти уточнює реєстратура</li>
+          </ul>
+          <div class="program__act">
+            <CallButton variant="light" label="Зателефонувати" />
+            <a class="tl" href="#docs" data-doc="pilha">Що взяти з собою <span class="arrow" aria-hidden="true">↓</span></a>
+          </div>
+        </article>
+        <article class="program">
+          <p class="program__for">Для всіх пацієнтів</p>
+          <h3>Працюємо з НСЗУ та HELSI</h3>
+          <ul>
+            <li>Поліклініка співпрацює з НСЗУ та медичною інформаційною системою HELSI</li>
+          </ul>
+          <div class="program__act">
+            <CallButton variant="light" label="Запитати в реєстратурі" />
+          </div>
+        </article>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="posluhy" rec="R-006,SE-R006" class="section posluhy" label="Послуги і ціни">
+    <div class="container">
+      <div class="posluhy__head">
+        <h2 class="section__h">Послуги і ціни</h2>
+        <p class="lead">Ціни відкриті. Це вибрані позиції прейскуранту — решту скаже реєстратура.</p>
+      </div>
+      <div class="tiles">
+        <PriceTile class="tile--7" name="Терапевтична стоматологія" lead="Діагностика і лікування захворювань зубів та ротової порожнини, профілактика." from="258" fromLabel="Первинний огляд" home="682" items={[["Первинний огляд хворого", "258"], ["Знеболювання аплікаційне", "101"], ["Флюоризація зубів", "84"], ["Професійна гігієна всіх зубів", "415"], ["Зняття зубного каменю ультразвуком, усі зуби", "507"]]} />
+        <PriceTile class="tile--5" name="Хірургічна стоматологія" lead="Видалення зубів, лікування запальних процесів, імплантація." from="223" fromLabel="Видалення зуба просте" home="714" items={[["Первинний огляд хворого", "267"], ["Видалення зуба просте", "223"], ["Видалення зуба складне", "312"], ["Видалення тимчасового зуба", "179"], ["Розтин окістя", "179"]]} />
+        <PriceTile class="tile--5" name="Ортопедична стоматологія" lead="Усі види протезування: знімне, незнімне, комбіноване, мікропротезування." from="277" fromLabel="Первинне обстеження" home="669" items={[["Первинне обстеження хворого", "277"], ["Штампована коронка (сталева)", "702"], ["Коронка пластмасова", "763"], ["Знімний протез в оклюдаторі", "2216"]]} />
+        <article class="tile tile--7 tile--xray">
+          <h3>Рентгенографія і комп'ютерна томографія</h3>
+          <div class="tile__from"><small>Апарат Ortophos SL</small>2D і 3D діагностика</div>
+          <p>Цифрова рентгенографія і 3D-томографія щелепно-лицевої ділянки: висока інформативність, низький рівень опромінення, чіткий знімок.</p>
+          <CallButton label="Уточнити вартість у реєстратурі" />
+        </article>
+      </div>
+      <div class="tiles__more">
+        <p class="tiles__note">Дитячий прийом — з окремими цінами нижче. Також проводимо ортодонтичне лікування зубощелепних аномалій.</p>
+        <FutureLink note="Розділ у розробці" class="future-link--end">Повний прейскурант</FutureLink>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="dity" class="section dity" label="Дитячий прийом">
+    <div class="container dity__grid">
+      <div class="dity__head">
+        <h2 class="section__h">Дитячий прийом</h2>
+      </div>
+      <div>
+        <div class="dity__prices">
+          <div class="big-price"><b>284 грн</b><span>Первинний огляд дитини</span></div>
+          <div class="big-price"><b>від 298 грн</b><span>Лікування неускладненого карієсу, пломба з цементу</span></div>
+        </div>
+        <div class="dity__act"><CallButton label="Записати дитину: зателефонувати" /></div>
+      </div>
+      <ul class="rules">
+        <li data-n="1">Огляд і лікування дітей відбуваються за присутності члена сім'ї або законного представника.</li>
+        <li data-n="2">Для профілактичного огляду та пільгового лікування дитини потрібна копія свідоцтва про народження.</li>
+        <li data-n="3">У поліклініці працюють лікарі-стоматологи дитячі.</li>
+      </ul>
+    </div>
+  </Section>
+
+  <Section id="vizyt" rec="R-004" class="section vizyt" label="Як потрапити на прийом">
+    <div class="container">
+      <h2 class="section__h">Як потрапити на прийом</h2>
+      <p class="lead" style="margin-top:var(--s2)">Запис — у реєстратурі: за телефоном або особисто.</p>
+      <ol class="steps">
+        <li class="step"><b aria-hidden="true">1</b><h3>Реєстратура</h3><p>Заповнюють медичну карту і видають талон на прийом до лікаря потрібної спеціальності.</p></li>
+        <li class="step"><b aria-hidden="true">2</b><h3>Огляд</h3><p>Лікар оглядає, визначає обсяг допомоги, за потреби скеровує на додаткове обстеження.</p></li>
+        <li class="step"><b aria-hidden="true">3</b><h3>Лікування</h3><p>Після діагнозу і погодження плану лікар проводить усі потрібні маніпуляції.</p></li>
+        <li class="step"><b aria-hidden="true">4</b><h3>Повторні візити</h3><p>Дату і час повідомляють. Перед кожним візитом — талон у реєстратурі.</p></li>
+        <li class="step"><b aria-hidden="true">5</b><h3>Рекомендації</h3><p>Після завершення лікування — поради щодо догляду за ротовою порожниною.</p></li>
+      </ol>
+      <div class="docs" id="docs">
+        <h3>Що взяти з собою</h3>
+        <div class="docs__tabs" role="group" aria-label="Категорія пацієнта">
+          <button type="button" data-doc-btn="pay" aria-pressed="true">Платно</button>
+          <button type="button" data-doc-btn="pilha" aria-pressed="false">Пільга</button>
+          <button type="button" data-doc-btn="ins" aria-pressed="false">Страховий поліс</button>
+          <button type="button" data-doc-btn="child" aria-pressed="false">Дитина</button>
+        </div>
+        <div class="docs__panels">
+          <section class="doc" data-doc-panel="pay" aria-labelledby="d-pay"><h3 id="d-pay">Платно</h3><p>Перед кожним відвідуванням потрібен талон на прийом у реєстратурі. Які документи потрібні для платного прийому, уточнюйте в реєстратурі.</p></section>
+          <section class="doc" data-doc-panel="pilha" aria-labelledby="d-pilha" hidden><h3 id="d-pilha">Пільга і міська програма</h3><p>Оригінали документів:</p>
+            <ul><li>паспорт у вигляді книжечки або ID-картка та реєстраційний номер облікової картки платника податків (ІПН)</li><li>довідка про реєстрацію місця проживання</li><li>посвідчення встановленого зразка, якщо ви належите до пільгової категорії</li></ul></section>
+          <section class="doc" data-doc-panel="ins" aria-labelledby="d-ins" hidden><h3 id="d-ins">Страховий поліс</h3><p>Оригінали документів:</p>
+            <ul><li>паспорт у вигляді книжечки або ID-картка та ІПН</li><li>довідка про реєстрацію місця проживання</li><li>страховий поліс</li><li>підтвердження (гарантія) оплати страхового випадку та доступної страхової суми на рахунку</li></ul></section>
+          <section class="doc" data-doc-panel="child" aria-labelledby="d-child" hidden><h3 id="d-child">Дитина</h3>
+            <ul><li>для профілактичного огляду та пільгового лікування — копія свідоцтва про народження дитини, додатково до документів дорослого</li><li>дитину оглядають і лікують за присутності члена сім'ї або законного представника</li></ul></section>
+        </div>
+      </div>
+      <p class="special">Пацієнти з особливими потребами, зокрема діти, обслуговуються позачергово за попереднім записом у реєстратурі.</p>
+    </div>
+  </Section>
+
+  <Section id="pro" rec="R-008" class="pro" label="Про поліклініку">
+    <figure class="pro__fig">
+      <picture>
+        <source type="image/avif" srcset="kabinet-430.avif 430w, kabinet-860.avif 860w" sizes="(min-width: 64em) 58vw, 100vw" />
+        <source type="image/webp" srcset="kabinet-430.webp 430w, kabinet-860.webp 860w" sizes="(min-width: 64em) 58vw, 100vw" />
+        <img src="kabinet-860.webp" width="860" height="610" loading="lazy" decoding="async" alt="Світлий стоматологічний кабінет поліклініки з двома кріслами біля великого вікна" />
+      </picture>
+    </figure>
+    <div class="pro__txt">
+      <h2 class="section__h">Про поліклініку</h2>
+      <ul class="facts">
+        <li>Комунальне некомерційне підприємство Львівської міської ради. Створене у 2017 році шляхом реорганізації Комунальної 1-ої стоматологічної поліклініки м. Львова.</li>
+        <li>Профілактика, діагностика, лікування, зубопротезування та ортодонтичне лікування для дорослих і дітей.</li>
+        <li>Цифрова рентгенографія і 3D-томографія на апараті Ortophos SL.</li>
+        <li>Співпраця з НСЗУ та HELSI.</li>
+      </ul>
+      <div class="pro__links">
+        <FutureLink note="Розділ у розробці">Лікарі і розклад</FutureLink>
+        <FutureLink note="Розділ у розробці">Про нас</FutureLink>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="kontakty" class="section kontakty on-dark" label="Контакти і години">
+    <div class="container kontakty__grid">
+      <div class="kontakty__head"><h2 class="section__h">Контакти і години</h2></div>
+      <div class="kontakty__phone">
+        <p class="lead">Дороги сходяться тут: запис — у реєстратурі за телефоном або особисто.</p>
+        <span class="status" data-status>Пн–Пт 08:00–20:00 · Сб–Нд 09:00–16:00</span>
+        <div class="kontakty__act">
+          <CallButton />
+          <a class="btn btn--ghost" href={map} target="_blank" rel="noopener">Як дістатися</a>
+        </div>
+      </div>
+      <dl>
+        <div><dt>Реєстратура</dt><dd><a href="tel:+380674758565" data-rec="R-002">(067) 475-85-65</a></dd></div>
+        <div><dt>Адреса</dt><dd>пр. Шевченка, 24, Львів</dd></div>
+        <div><dt>Години роботи</dt><dd>Пн–Пт 08:00–20:00<br />Сб–Нд і святкові 09:00–16:00</dd></div>
+        <div><dt>Зміни лікарів</dt><dd>Перша 08:00–14:00 · друга 14:00–20:00</dd></div>
+        <div><dt>Електронна пошта</dt><dd><a href="mailto:hello@1sp.lviv.ua">hello@1sp.lviv.ua</a></dd></div>
+      </dl>
+    </div>
+  </Section>
+
+  <SiteFooter slot="footer" />
+
+  <div class="callbar" data-callbar>
+    <a class="btn btn--call" href="tel:+380674758565" data-rec="R-002">Зателефонувати</a>
+    <a class="btn btn--ghost" href={map} target="_blank" rel="noopener">Як дістатися</a>
+  </div>
+
+  <script>
+    import "../scripts/site.ts";
+  </script>
+</Base>

@@ -1,0 +1,22 @@
+---
+import CallButton from "./CallButton.astro";
+interface Props { name: string; lead: string; from: string; fromLabel: string; home?: string; items: [string, string][]; class?: string; }
+const { name, lead, from, fromLabel, home, items, class: cls } = Astro.props;
+---
+<article class:list={["tile", cls]}>
+  <h3>{name}</h3>
+  <div class="tile__top">
+    <div class="tile__from"><small>{fromLabel}</small>від {from} грн</div>
+    {home && <span class="tile__home">Виклик на дім · {home} грн</span>}
+  </div>
+  <p>{lead}</p>
+  <details>
+    <summary><span>Ціни на позиції</span><span class="plus" aria-hidden="true"></span></summary>
+    <div class="tile__body">
+      <dl class="prices">
+        {items.map(([n, p]) => <div><dt>{n}</dt><dd>{p} грн</dd></div>)}
+      </dl>
+      <CallButton label="Записатися за телефоном" block />
+    </div>
+  </details>
+</article>
